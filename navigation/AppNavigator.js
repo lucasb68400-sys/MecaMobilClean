@@ -32,11 +32,11 @@ const AppNavigator = ({ currentUser, onLogout }) => {
       <StatusBar style="light" backgroundColor={COLORS.background} />
       <Tab.Navigator
         tabBar={(props) => <CustomTabBar {...props} />}
-        screenOptions={{
-          headerShown: false,
-        }}
+        screenOptions={{ headerShown: false }}
       >
-        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Home">
+          {(props) => <HomeScreen {...props} currentUser={currentUser} />}
+        </Tab.Screen>
         <Tab.Screen name="Map" component={MapScreen} />
         <Tab.Screen name="Quotes" component={QuotesScreen} />
         <Tab.Screen name="Messages" component={MessagesScreen} />
